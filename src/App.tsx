@@ -157,15 +157,6 @@ const OrderItem = ({ order, onUpdate }) => {
       })
       .catch((err) => console.log('error on catch-->', err));
   };
-
-  const login = () => {
-    FlyBuy.Core.Customer.login()
-      .then((customer) => {
-        console.log('customer', customer);
-        fetchOrders();
-      })
-      .catch((err) => console.log(err));
-  };
   React.useEffect(() => {
     console.log(FlyBuy.Core.configure(AppConfig.APP_TOKEN))
     FlyBuy.Pickup.configure();
@@ -187,18 +178,9 @@ const OrderItem = ({ order, onUpdate }) => {
 
   return (
     <View style={styles.container}>
-      <Button title="Login" onPress={login} />
-      <Header />
-      {loading && <ActivityIndicator color="white" size="large" />}
-      <FlatList
-        style={{ width: '100%', paddingHorizontal: 10 }}
-        data={orders}
-        renderItem={renderItem}
-        keyExtractor={(item) => String(item.id)}
-      />
-      <Button title="New Order With" onPress={createOrder} />
+      <Button title="Create An Order" onPress={createOrder} />
       <TextInput
-        placeholder="Partner ID"
+        placeholder="Order ID"
         style={styles.partner}
         value={partnerId}
         onChangeText={(e) => {
@@ -212,7 +194,7 @@ const OrderItem = ({ order, onUpdate }) => {
 const styles = StyleSheet.create({
   enRoute: {
     textAlign: 'right',
-    color: 'green',
+    color: 'blue',
   },
   btnContainer: {
     display: 'flex',
@@ -238,7 +220,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'green',
+    backgroundColor: 'blue',
     paddingVertical: 40,
   },
   orderItem: {
@@ -247,7 +229,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'yellow',
+    backgroundColor: 'black',
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderBottomWidth: 1,
