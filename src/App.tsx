@@ -159,7 +159,7 @@ const OrderItem = ({ order, onUpdate }) => {
   };
 
   const login = () => {
-    FlyBuy.Core.Customer.login('ha_zellat@esi.dz', 'password')
+    FlyBuy.Core.Customer.login()
       .then((customer) => {
         console.log('customer', customer);
         fetchOrders();
